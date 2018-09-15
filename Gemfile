@@ -67,5 +67,8 @@ gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'sprockets-rails'
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
 
 
