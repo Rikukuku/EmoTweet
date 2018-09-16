@@ -3,17 +3,18 @@
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "errors")%>prohibited this post from being saved:</h2>
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
       <ul>
-      <%= post.errors.full_messages.each do |message| %>
-        <li><%= message %>></li>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="form_group">
+  <div class="form-group">
     <p>背景画像選択</p>
+    <!-- 背景画像はラジオボタンで選択形式 -->
     <label><%= form.radio_button :kind, "black" %><%= image_tag 'black.jpg', width: '100' %></label>
     <label><%= form.radio_button :kind, "red" %><%= image_tag 'red.jpg', width: '100' %></label>
   </div>
@@ -23,12 +24,12 @@
   </div>
 
   <div class="form-group">
-    <p>画像内の文字を入力</p>
-    <% form.text_area :content, class: 'form-control', rows:"3" %>
+    <p>画像内の文字入力</p>
+    <%= form.text_area :content, class:'form-control', rows:"3" %>
   </div>
 
   <div class="actions">
-    <%= form.submit "画像を確認する（まだツイートされません）", id:'submit', class:"square_btn" %>
+    <%= form.submit "画像を確認する（まだツイートされません）", id: 'submit', class:"square_btn" %>
   </div>
 <% end %>
 
