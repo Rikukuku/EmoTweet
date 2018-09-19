@@ -4,8 +4,7 @@ module ApplicationHelper
     if post.present?
       if post.id.present?
         twitter_card[:url] = "https://emotionaltweet.herokuapp.com/posts/#{post.id}"
-        twitter_card[:image] = "https://s3-ap-northeast-1.amazonaws.com/emotionaltweet-production/images/22.png"
-        #twitter_card[:image] = "https://s3-ap-northeast-1.amazonaws.com/emotionaltweet-production/images/#{post.id}.png"
+        twitter_card[:image] = "https://s3-ap-northeast-1.amazonaws.com/emotionaltweet-production/images/#{post.id - 11}.png"
       else
         twitter_card[:url] = 'https://emotionaltweet.herokuapp.com/'
         twitter_card[:image] = "https://raw.githubusercontent.com/Rikukuku/emotionaltweet/master/app/assets/images/top.png"
