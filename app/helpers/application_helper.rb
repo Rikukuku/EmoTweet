@@ -14,7 +14,7 @@ module ApplicationHelper
       twitter_card[:image] = "https://raw.githubusercontent.com/Rikukuku/emotionaltweet/master/app/assets/images/top.png"
     end
     twitter_card[:title] = "エモツイ"
-    twitter_card[:card] = 'summary_large_image'
+    twitter_card[:card] = 'summary'
     twitter_card[:description] = '登録不要!感情をのせまくろう'
     twitter_card
   end
