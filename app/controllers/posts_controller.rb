@@ -106,12 +106,13 @@ class PostsController < ApplicationController
       end
       pointsize = 45
     end
+
     # ⑨-5 文字色の指定
     color = "white"
     # ⑨-6 文字を入れる場所の調整（0,0を変えると文字の位置が変わります）
     draw = "text 0,0 '#{sentense}'"
     # ⑨-7 フォントの指定
-    font = ".fonts/GenEiGothicN-U-KL.otf"
+    font = "app/.fonts/GenEiGothicN-U-KL.otf"
     # ⑨-8 ↑これらの項目も文字サイズのように背景画像や文字数によって変えることができます
     # ⑨-9 選択された背景画像の設定
     case @post.kind
@@ -141,18 +142,18 @@ class PostsController < ApplicationController
     case Rails.env
       when 'production'
         # ⑨-14 バケットの指定・URLの設定
-        bucket = storage.directories.get('[アプリ名]-production')
+        bucket = storage.directories.get('emotionaltweet-production')
         # ⑨-15 保存するディレクトリ、ファイル名の指定（ファイル名は投稿id.pngとしています）
         png_path = 'images/' + id.to_s + '.png'
         image_uri = image.path
         file = bucket.files.create(key: png_path, public: true, body: open(image_uri))
-        @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/[アプリ名]-production' + "/" + png_path
+        @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/emotionaltweet-production' + "/" + png_path
       when 'development'
-        bucket = storage.directories.get('[アプリ名]-development')
+        bucket = storage.directories.get('emotionaltweet-development')
         png_path = 'images/' + id.to_s + '.png'
         image_uri = image.path
         file = bucket.files.create(key: png_path, public: true, body: open(image_uri))
-        @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/[アプリ名]-development' + "/" + png_path
+        @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/emotionaltweet-development' + "/" + png_path
     end
   end
 end
