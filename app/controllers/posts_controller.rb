@@ -44,6 +44,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       make_picture(@post.id)
       redirect_to confirm_path(@post)
+
     else
       render :edit
     end
@@ -131,6 +132,8 @@ class PostsController < ApplicationController
       i.pointsize pointsize
       i.draw draw
     end
+
+    #時間があったらリファクタリングする
     # ⑨-12 保存先のストレージの指定。Amazon S3を指定する。
     storage = Fog::Storage.new(
       provider: 'AWS',
